@@ -1,0 +1,32 @@
+{
+  "name": "vyber-cli",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "",
+  "main": "src/bin.ts",
+  "bin": {
+    "vyber": "./bin/index.cjs",
+    "v": "./bin/index.cjs"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --outfile=bin/index.cjs --bundle --platform=node --target=node22 --format=cjs --minify",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "lint:unsafe": "biome lint --write --unsafe ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.0.2",
+    "@types/prompts": "^2.4.9",
+    "esbuild": "^0.23.0"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "prompts": "^2.4.2",
+    "tsx": "^4.16.5",
+    "zx": "^8.1.4"
+  }
+}
