@@ -21331,7 +21331,6 @@ async function run3() {
     "git push"
   ].join(" && ");
   (0, import_node_child_process3.exec)(command);
-  console.log("\u{1F680} ~ run ~ command:", command);
   console.log(styled.success("Auto commit complete!"));
   process.exit(0);
 }

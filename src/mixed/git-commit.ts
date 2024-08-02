@@ -10,7 +10,6 @@ async function run() {
   ].join(" && ")
 
   exec(command)
-  console.log("🚀 ~ run ~ command:", command)
 
   console.log(styled.success("Auto commit complete!"))
 
