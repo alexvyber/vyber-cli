@@ -17,3 +17,5 @@ domains_to_block:
   - app.convertkit.com
   - slack.com
   - discord.com
+
+bookmarks_api_url: "https://bookmarks.alexvyber.dev/bookmarks"

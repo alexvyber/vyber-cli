@@ -1,3 +1,4 @@
+import bookmark from "./bookmark.js"
 import prompts from "prompts"
 import gitNewRepo from "./git-new-repo.js"
 import { CLIScript } from "../types.js"
@@ -7,6 +8,7 @@ import gitCommit from "./git-commit.js"
 import newScript from "./add-new-script.js"
 
 const scripts = {
+  bookmark,
   newScript,
   focusMode,
   gitNewRepo,
