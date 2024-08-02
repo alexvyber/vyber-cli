@@ -8,6 +8,7 @@ async function run() {
   )
 
   console.log(styled.success("Auto commit complete!"))
+  process.exit(0)
 }
 
 export const gitCommit = {

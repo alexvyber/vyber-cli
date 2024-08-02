@@ -21329,6 +21329,7 @@ async function run3() {
     `git add -A && git commit -m "${DateTime.now().setLocale("en-US").toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}" && git push`
   );
   console.log(styled.success("Auto commit complete!"));
+  process.exit(0);
 }
 var gitCommit = {
   run: run3,
