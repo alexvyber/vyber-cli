@@ -21325,16 +21325,17 @@ function friendlyDateTime(dateTimeish) {
 
 // src/mixed/git-commit.ts
 async function run3() {
-  (0, import_node_child_process3.exec)(
-    `git add -A && git commit -m "${DateTime.now().setLocale("en-US").toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}" && git push`
-  );
+  const command = [
+    "git add -A",
+    `git commit -m "${DateTime.now().setLocale("en-US").toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}"`,
+    "git push"
+  ].join(" && ");
+  (0, import_node_child_process3.exec)(command);
+  console.log("\u{1F680} ~ run ~ command:", command);
   console.log(styled.success("Auto commit complete!"));
   process.exit(0);
 }
-var gitCommit = {
-  run: run3,
-  title: "Auto Commit"
-};
+var gitCommit = { run: run3, title: "Auto Commit" };
 
 // src/mixed/index.ts
 var scripts = {
