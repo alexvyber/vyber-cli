@@ -12,7 +12,7 @@ const templates = {
   scriptLine: (title: string) => `${camelCase(title)},`,
 }
 
-const mixedPath = ["@alexvyber", "projects", "vyber-cli", "src", "mixed"]
+const mixedPath = ["@alexvyber", "repos", "vyber-cli", "src", "mixed"]
 
 async function run() {
   const title = await arg({ message: "What is the title of the script?" })
@@ -39,7 +39,7 @@ async function run() {
   await writeFile(scriptPath, templates.scriptFile(title))
   await writeFile(mainPath, mainFileLines.join("\n"))
 
-  exec("biome format --write .", { cwd: homeDir("@alexvyber", "projects", "vyber-cli") })
+  exec("biome format --write .", { cwd: homeDir("@alexvyber", "repos", "vyber-cli") })
   exec(`code ${scriptPath}`)
 
   process.exit(0)
