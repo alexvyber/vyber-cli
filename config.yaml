@@ -1,4 +1,4 @@
-domains_to_block: 
+domains_to_block:
   - twitter.com
   - www.twitter.com
   - instagram.com

@@ -21,4 +21,4 @@ async function run() {
   exec(`code ${dirPath}`, { cwd: dirPath })
 }
 
-export default { run, title: "New Repo" }
+export default { run, title: "Repo: create new git repo" }

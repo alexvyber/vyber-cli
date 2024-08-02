@@ -16,4 +16,4 @@ async function run() {
   process.exit(0)
 }
 
-export default { run, title: "Auto Commit" }
+export default { run, title: "Commit: auto git commit" }

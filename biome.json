@@ -93,7 +93,10 @@
         "noUselessLoneBlockStatements": "error",
         "useSimplifiedLogicExpression": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
-        "noExcessiveCognitiveComplexity": { "level": "warn", "options": { "maxAllowedComplexity": 10 } }
+        "noExcessiveCognitiveComplexity": {
+          "level": "warn",
+          "options": { "maxAllowedComplexity": 10 }
+        }
       },
       "suspicious": {
         "useAwait": "off",

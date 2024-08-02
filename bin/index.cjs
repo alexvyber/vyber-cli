@@ -15086,7 +15086,7 @@ function init({ manager = "pnpm" } = { manager: "pnpm" }) {
 // src/mixed/main.ts
 var import_prompts2 = __toESM(require_prompts3());
 
-// src/mixed/new-repo.ts
+// src/mixed/git-new-repo.ts
 var import_promises = require("node:fs/promises");
 
 // src/utils/args.ts
@@ -15111,7 +15111,7 @@ function homeDir(...pathParts) {
   return import_node_path.default.resolve((0, import_node_os.homedir)(), ...pathParts);
 }
 
-// src/mixed/new-repo.ts
+// src/mixed/git-new-repo.ts
 var import_node_child_process2 = require("node:child_process");
 var import_node_fs = require("node:fs");
 
@@ -15122,7 +15122,7 @@ var styled = {
   success: (msg) => (0, import_node_util.styleText)(["green", "bold"], msg)
 };
 
-// src/mixed/new-repo.ts
+// src/mixed/git-new-repo.ts
 async function run() {
   const name = await arg({ message: "Name" });
   const dirPath = homeDir("@alexvyber/repos", name);
@@ -15134,7 +15134,7 @@ async function run() {
   (0, import_node_child_process2.exec)("vyber init", { cwd: dirPath });
   (0, import_node_child_process2.exec)(`code ${dirPath}`, { cwd: dirPath });
 }
-var new_repo_default = { run, title: "New Repo" };
+var git_new_repo_default = { run, title: "Repo: create new git repo" };
 
 // src/mixed/main.ts
 var import_strict = __toESM(require("node:assert/strict"));
@@ -15165,7 +15165,7 @@ async function run2() {
     console.log(styled.error("Error writing to file. Try running again with sudo."));
   }
 }
-var focus_mode_default = { run: run2, title: "Toggle Focus Mode" };
+var focus_mode_default = { run: run2, title: "Focus Mode Toggle " };
 
 // src/mixed/git-commit.ts
 var import_node_child_process3 = require("node:child_process");
@@ -21334,7 +21334,7 @@ async function run3() {
   console.log(styled.success("Auto commit complete!"));
   process.exit(0);
 }
-var git_commit_default = { run: run3, title: "Auto Commit" };
+var git_commit_default = { run: run3, title: "Commit: auto git commit" };
 
 // src/mixed/add-new-script.ts
 var import_promises3 = require("node:fs/promises");
@@ -21467,13 +21467,13 @@ async function run4() {
   (0, import_node_child_process4.exec)(`code ${scriptPath}`);
   process.exit(0);
 }
-var add_new_script_default = { title: "Add New Script", run: run4 };
+var add_new_script_default = { title: "Script New", run: run4 };
 
 // src/mixed/main.ts
 var scripts = {
-  addNewScript: add_new_script_default,
-  newRepo: new_repo_default,
+  newScript: add_new_script_default,
   focusMode: focus_mode_default,
+  gitNewRepo: git_new_repo_default,
   gitCommit: git_commit_default
 };
 async function mixed() {
@@ -21481,7 +21481,10 @@ async function mixed() {
     message: "Which script would you like to run?",
     name: "script",
     type: "autocomplete",
-    choices: Object.entries(scripts).map(([key, script2]) => ({ title: script2.title, value: key }))
+    choices: Object.entries(scripts).map(([key, script2]) => ({
+      title: script2.title,
+      value: key
+    }))
   });
   if (!choosen.script) {
     process.exit(0);

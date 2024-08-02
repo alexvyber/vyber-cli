@@ -34,4 +34,4 @@ async function run() {
   }
 }
 
-export default { run, title: "Toggle Focus Mode" }
+export default { run, title: "Focus Mode Toggle " }

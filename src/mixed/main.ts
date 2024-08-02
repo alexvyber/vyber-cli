@@ -1,15 +1,15 @@
 import prompts from "prompts"
-import newRepo from "./new-repo.js"
+import gitNewRepo from "./git-new-repo.js"
 import { CLIScript } from "../types.js"
 import assert from "node:assert/strict"
 import focusMode from "./focus-mode.js"
 import gitCommit from "./git-commit.js"
-import addNewScript from "./add-new-script.js"
+import newScript from "./add-new-script.js"
 
 const scripts = {
-  addNewScript,
-  newRepo,
+  newScript,
   focusMode,
+  gitNewRepo,
   gitCommit,
 } satisfies Record<string, CLIScript>
 
@@ -22,7 +22,10 @@ export async function mixed() {
     message: "Which script would you like to run?",
     name: "script",
     type: "autocomplete",
-    choices: Object.entries(scripts).map(([key, script]) => ({ title: script.title, value: key })),
+    choices: Object.entries(scripts).map(([key, script]) => ({
+      title: script.title,
+      value: key,
+    })),
   })
 
   if (!choosen.script) {

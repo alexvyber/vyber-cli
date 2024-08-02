@@ -45,4 +45,4 @@ async function run() {
   process.exit(0)
 }
 
-export default { title: "Add New Script", run }
+export default { title: "Script New", run }
