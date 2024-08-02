@@ -3,10 +3,14 @@
 import { Command } from "commander"
 import { init } from "./scripts/init.js"
 import { mixed } from "./mixed/main.js"
+import path from "node:path"
+import { readFileSync } from "node:fs"
 
 const program = new Command()
 
-program.version("0.0.1")
+const json = JSON.parse(readFileSync(path.join(path.resolve(__dirname, "../package.json")), "utf8"))
+
+program.version(json.version)
 
 program.action(mixed)
 
