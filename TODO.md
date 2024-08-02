@@ -5,3 +5,8 @@
 5. gen node ignore
 6. gen tsconfig
 7. gen git ignore
+
+Implementation
+1. Do I realy need commander?
+2. Is there better prompts?
+3. Other build and full esm modules?
