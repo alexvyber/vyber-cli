@@ -1,9 +1,6 @@
-import { exec } from "node:child_process"
+import { execSync } from "node:child_process"
 import { styled } from "../utils/styled"
 import { DateTime } from "luxon"
-import { promisify } from "node:util"
-
-const execAsync = promisify(exec)
 
 async function run() {
   const commands = [
@@ -14,7 +11,7 @@ async function run() {
 
   // it's better than command1 && ccommand2 && command3
   for (const command of commands) {
-    await execAsync(command)
+    execSync(command)
   }
 
   console.log(styled.success("Auto commit complete!"))

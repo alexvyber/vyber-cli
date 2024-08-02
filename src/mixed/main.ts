@@ -8,8 +8,10 @@ import gitNewRepo from "./git-new-repo.js"
 import focusMode from "./focus-mode.js"
 import gitCommit from "./git-commit.js"
 import newScript from "./add-new-script.js"
+import nodeInit from "./node-init.js"
 
 const scripts = {
+  nodeInit,
   bookmark,
   newScript,
   focusMode,

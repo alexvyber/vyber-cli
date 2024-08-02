@@ -1,6 +1,6 @@
 import { execSync } from "node:child_process"
 
-export function init({ manager = "pnpm" }: { manager?: "pnpm" | "yarn" | "npm" } = { manager: "pnpm" }) {
+async function run({ manager = "pnpm" }: { manager?: "pnpm" | "yarn" | "npm" } = { manager: "pnpm" }) {
   execSync("git init")
 
   if (manager === "pnpm") {
@@ -26,3 +26,5 @@ export function init({ manager = "pnpm" }: { manager?: "pnpm" | "yarn" | "npm" }
   execSync("mkdir src")
   execSync("touch src/index.ts")
 }
+
+export default { run, title: "Node Init" }
