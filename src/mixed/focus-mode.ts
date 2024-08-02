@@ -1,14 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises"
 import { styled } from "../utils/styled"
 import YAML from "yaml"
-import path from "node:path"
 import { Config } from "../types"
+import { getConfigContent } from "../utils/get-config-content"
 
 const HOSTS_FILE = "/etc/hosts"
 
 async function run() {
-  const configContent = await readFile(path.resolve(__dirname, "../config.yaml"), "utf-8")
-  const { domains_to_block } = YAML.parse(configContent) as Config
+  const { domains_to_block } = YAML.parse(await getConfigContent()) as Config
   const linesToDelete = domains_to_block.map((domain) => `127.0.0.1       ${domain}`)
 
   const contents = await readFile(HOSTS_FILE, "utf-8")
