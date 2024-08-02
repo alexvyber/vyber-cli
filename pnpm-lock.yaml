@@ -17,6 +17,9 @@ importers:
       tsx:
         specifier: ^4.16.5
         version: 4.16.5
+      yaml:
+        specifier: ^2.5.0
+        version: 2.5.0
     devDependencies:
       '@types/node':
         specifier: ^22.0.2
@@ -362,6 +365,11 @@ packages:
   undici-types@6.11.1:
     resolution: {integrity: sha512-mIDEX2ek50x0OlRgxryxsenE5XaQD4on5U2inY7RApK3SOJpofyw7uW2AyfMKkhAxXIceo2DeWGVGwyvng1GNQ==}
 
+  yaml@2.5.0:
+    resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -595,3 +603,5 @@ snapshots:
       fsevents: 2.3.3
 
   undici-types@6.11.1: {}
+
+  yaml@2.5.0: {}

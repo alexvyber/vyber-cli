@@ -1,12 +1,22 @@
 import prompts from "prompts"
 import newRepo from "./new-repo.js"
+import { CLIScript } from "../types.js"
+import assert from "node:assert/strict"
+import { focusMode } from "./focus-mode.js"
+import { gitCommit } from "./git-commit.js"
 
-const scripts: Record<string, { title: string; run: () => Promise<void> }> = {
+const scripts = {
   newRepo,
+  focusMode,
+  gitCommit,
+} satisfies Record<string, CLIScript>
+
+interface Prompt {
+  script: keyof typeof scripts
 }
 
 export async function mixed() {
-  const choosen = await prompts({
+  const choosen: Prompt = await prompts({
     message: "Which script would you like to run?",
     name: "script",
     type: "autocomplete",
@@ -17,5 +27,9 @@ export async function mixed() {
     process.exit(0)
   }
 
-  await scripts[choosen.script as keyof typeof scripts].run()
+  const script = scripts[choosen.script]
+
+  assert(script, "must be a script")
+
+  await script.run()
 }

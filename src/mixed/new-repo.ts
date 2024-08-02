@@ -3,7 +3,7 @@ import { arg } from "../utils/args.js"
 import { homeDir } from "../utils/home-dir.js"
 import { exec } from "node:child_process"
 import { existsSync } from "node:fs"
-import { styleText } from "node:util"
+import { styled } from "../utils/styled.js"
 
 async function run() {
   const name = await arg({ message: "Name" })
@@ -11,7 +11,7 @@ async function run() {
   const dirPath = homeDir("@alexvyber/repos", name)
 
   if (existsSync(dirPath)) {
-    console.log(styleText(["bold", "red"], `dir or file exist: ${dirPath}`))
+    styled.error(`dir or file exist: ${dirPath}`)
     process.exit(1)
   }
 
