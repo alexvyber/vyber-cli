@@ -11,6 +11,9 @@ importers:
       commander:
         specifier: ^12.1.0
         version: 12.1.0
+      luxon:
+        specifier: ^3.4.4
+        version: 3.4.4
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
@@ -21,6 +24,9 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0
     devDependencies:
+      '@types/luxon':
+        specifier: ^3.4.2
+        version: 3.4.2
       '@types/node':
         specifier: ^22.0.2
         version: 22.0.2
@@ -315,6 +321,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@types/luxon@3.4.2':
+    resolution: {integrity: sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==}
+
   '@types/node@22.0.2':
     resolution: {integrity: sha512-yPL6DyFwY5PiMVEwymNeqUTKsDczQBJ/5T7W/46RwLU/VH+AA8aT5TZkvBviLKLbbm0hlfftEkGrNzfRk/fofQ==}
 
@@ -346,6 +355,10 @@ packages:
   kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
+
+  luxon@3.4.4:
+    resolution: {integrity: sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==}
+    engines: {node: '>=12'}
 
   prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -513,6 +526,8 @@ snapshots:
   '@esbuild/win32-x64@0.23.0':
     optional: true
 
+  '@types/luxon@3.4.2': {}
+
   '@types/node@22.0.2':
     dependencies:
       undici-types: 6.11.1
@@ -585,6 +600,8 @@ snapshots:
       resolve-pkg-maps: 1.0.0
 
   kleur@3.0.3: {}
+
+  luxon@3.4.4: {}
 
   prompts@2.4.2:
     dependencies:
