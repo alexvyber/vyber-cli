@@ -1,7 +1,10 @@
 {
-  "name": "vyber-cli",
+  "name": "@alexvyber/vyber-cli",
   "version": "1.0.0",
   "type": "commonjs",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "",
   "main": "src/bin.ts",
   "bin": {
