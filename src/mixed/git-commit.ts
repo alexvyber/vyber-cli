@@ -16,4 +16,4 @@ async function run() {
   process.exit(0)
 }
 
-export const gitCommit = { run, title: "Auto Commit" }
+export default { run, title: "Auto Commit" }

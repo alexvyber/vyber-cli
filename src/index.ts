@@ -2,7 +2,7 @@
 
 import { Command } from "commander"
 import { init } from "./scripts/init.js"
-import { mixed } from "./mixed/index.js"
+import { mixed } from "./mixed/main.js"
 
 const program = new Command()
 

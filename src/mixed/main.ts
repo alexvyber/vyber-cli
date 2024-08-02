@@ -2,8 +2,8 @@ import prompts from "prompts"
 import newRepo from "./new-repo.js"
 import { CLIScript } from "../types.js"
 import assert from "node:assert/strict"
-import { focusMode } from "./focus-mode.js"
-import { gitCommit } from "./git-commit.js"
+import focusMode from "./focus-mode.js"
+import gitCommit from "./git-commit.js"
 
 const scripts = {
   newRepo,
