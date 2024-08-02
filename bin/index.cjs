@@ -959,7 +959,7 @@ var require_command = __commonJS({
   "node_modules/.pnpm/commander@12.1.0/node_modules/commander/lib/command.js"(exports2) {
     var EventEmitter = require("node:events").EventEmitter;
     var childProcess = require("node:child_process");
-    var path3 = require("node:path");
+    var path4 = require("node:path");
     var fs = require("node:fs");
     var process2 = require("node:process");
     var { Argument: Argument2, humanReadableArgName } = require_argument();
@@ -1892,9 +1892,9 @@ Expecting one of '${allowedValues.join("', '")}'`);
         let launchWithNode = false;
         const sourceExt = [".js", ".ts", ".tsx", ".mjs", ".cjs"];
         function findFile(baseDir, baseName) {
-          const localBin = path3.resolve(baseDir, baseName);
+          const localBin = path4.resolve(baseDir, baseName);
           if (fs.existsSync(localBin)) return localBin;
-          if (sourceExt.includes(path3.extname(baseName))) return void 0;
+          if (sourceExt.includes(path4.extname(baseName))) return void 0;
           const foundExt = sourceExt.find(
             (ext) => fs.existsSync(`${localBin}${ext}`)
           );
@@ -1912,17 +1912,17 @@ Expecting one of '${allowedValues.join("', '")}'`);
           } catch (err) {
             resolvedScriptPath = this._scriptPath;
           }
-          executableDir = path3.resolve(
-            path3.dirname(resolvedScriptPath),
+          executableDir = path4.resolve(
+            path4.dirname(resolvedScriptPath),
             executableDir
           );
         }
         if (executableDir) {
           let localFile = findFile(executableDir, executableFile);
           if (!localFile && !subcommand._executableFile && this._scriptPath) {
-            const legacyName = path3.basename(
+            const legacyName = path4.basename(
               this._scriptPath,
-              path3.extname(this._scriptPath)
+              path4.extname(this._scriptPath)
             );
             if (legacyName !== this._name) {
               localFile = findFile(
@@ -1933,7 +1933,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
           }
           executableFile = localFile || executableFile;
         }
-        launchWithNode = sourceExt.includes(path3.extname(executableFile));
+        launchWithNode = sourceExt.includes(path4.extname(executableFile));
         let proc;
         if (process2.platform !== "win32") {
           if (launchWithNode) {
@@ -2773,7 +2773,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
        * @return {Command}
        */
       nameFromFilename(filename) {
-        this._name = path3.basename(filename, path3.extname(filename));
+        this._name = path4.basename(filename, path4.extname(filename));
         return this;
       }
       /**
@@ -2787,9 +2787,9 @@ Expecting one of '${allowedValues.join("', '")}'`);
        * @param {string} [path]
        * @return {(string|null|Command)}
        */
-      executableDir(path4) {
-        if (path4 === void 0) return this._executableDir;
-        this._executableDir = path4;
+      executableDir(path5) {
+        if (path5 === void 0) return this._executableDir;
+        this._executableDir = path5;
         return this;
       }
       /**
@@ -3056,7 +3056,7 @@ var require_kleur = __commonJS({
       bgCyan: init2(46, 49),
       bgWhite: init2(47, 49)
     };
-    function run4(arr, str) {
+    function run5(arr, str) {
       let i = 0, tmp, beg = "", end = "";
       for (; i < arr.length; i++) {
         tmp = arr[i];
@@ -3107,9 +3107,9 @@ var require_kleur = __commonJS({
       return function(txt) {
         if (this !== void 0 && this.has !== void 0) {
           this.has.includes(open) || (this.has.push(open), this.keys.push(blk));
-          return txt === void 0 ? this : $.enabled ? run4(this.keys, txt + "") : txt + "";
+          return txt === void 0 ? this : $.enabled ? run5(this.keys, txt + "") : txt + "";
         }
-        return txt === void 0 ? chain([open], [blk]) : $.enabled ? run4([blk], txt + "") : txt + "";
+        return txt === void 0 ? chain([open], [blk]) : $.enabled ? run5([blk], txt + "") : txt + "";
       };
     }
     module2.exports = $;
@@ -7946,17 +7946,17 @@ var require_visit = __commonJS({
     visit.BREAK = BREAK;
     visit.SKIP = SKIP;
     visit.REMOVE = REMOVE;
-    function visit_(key, node, visitor, path3) {
-      const ctrl = callVisitor(key, node, visitor, path3);
+    function visit_(key, node, visitor, path4) {
+      const ctrl = callVisitor(key, node, visitor, path4);
       if (identity.isNode(ctrl) || identity.isPair(ctrl)) {
-        replaceNode(key, path3, ctrl);
-        return visit_(key, ctrl, visitor, path3);
+        replaceNode(key, path4, ctrl);
+        return visit_(key, ctrl, visitor, path4);
       }
       if (typeof ctrl !== "symbol") {
         if (identity.isCollection(node)) {
-          path3 = Object.freeze(path3.concat(node));
+          path4 = Object.freeze(path4.concat(node));
           for (let i = 0; i < node.items.length; ++i) {
-            const ci = visit_(i, node.items[i], visitor, path3);
+            const ci = visit_(i, node.items[i], visitor, path4);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -7967,13 +7967,13 @@ var require_visit = __commonJS({
             }
           }
         } else if (identity.isPair(node)) {
-          path3 = Object.freeze(path3.concat(node));
-          const ck = visit_("key", node.key, visitor, path3);
+          path4 = Object.freeze(path4.concat(node));
+          const ck = visit_("key", node.key, visitor, path4);
           if (ck === BREAK)
             return BREAK;
           else if (ck === REMOVE)
             node.key = null;
-          const cv = visit_("value", node.value, visitor, path3);
+          const cv = visit_("value", node.value, visitor, path4);
           if (cv === BREAK)
             return BREAK;
           else if (cv === REMOVE)
@@ -7994,17 +7994,17 @@ var require_visit = __commonJS({
     visitAsync.BREAK = BREAK;
     visitAsync.SKIP = SKIP;
     visitAsync.REMOVE = REMOVE;
-    async function visitAsync_(key, node, visitor, path3) {
-      const ctrl = await callVisitor(key, node, visitor, path3);
+    async function visitAsync_(key, node, visitor, path4) {
+      const ctrl = await callVisitor(key, node, visitor, path4);
       if (identity.isNode(ctrl) || identity.isPair(ctrl)) {
-        replaceNode(key, path3, ctrl);
-        return visitAsync_(key, ctrl, visitor, path3);
+        replaceNode(key, path4, ctrl);
+        return visitAsync_(key, ctrl, visitor, path4);
       }
       if (typeof ctrl !== "symbol") {
         if (identity.isCollection(node)) {
-          path3 = Object.freeze(path3.concat(node));
+          path4 = Object.freeze(path4.concat(node));
           for (let i = 0; i < node.items.length; ++i) {
-            const ci = await visitAsync_(i, node.items[i], visitor, path3);
+            const ci = await visitAsync_(i, node.items[i], visitor, path4);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -8015,13 +8015,13 @@ var require_visit = __commonJS({
             }
           }
         } else if (identity.isPair(node)) {
-          path3 = Object.freeze(path3.concat(node));
-          const ck = await visitAsync_("key", node.key, visitor, path3);
+          path4 = Object.freeze(path4.concat(node));
+          const ck = await visitAsync_("key", node.key, visitor, path4);
           if (ck === BREAK)
             return BREAK;
           else if (ck === REMOVE)
             node.key = null;
-          const cv = await visitAsync_("value", node.value, visitor, path3);
+          const cv = await visitAsync_("value", node.value, visitor, path4);
           if (cv === BREAK)
             return BREAK;
           else if (cv === REMOVE)
@@ -8048,23 +8048,23 @@ var require_visit = __commonJS({
       }
       return visitor;
     }
-    function callVisitor(key, node, visitor, path3) {
+    function callVisitor(key, node, visitor, path4) {
       if (typeof visitor === "function")
-        return visitor(key, node, path3);
+        return visitor(key, node, path4);
       if (identity.isMap(node))
-        return visitor.Map?.(key, node, path3);
+        return visitor.Map?.(key, node, path4);
       if (identity.isSeq(node))
-        return visitor.Seq?.(key, node, path3);
+        return visitor.Seq?.(key, node, path4);
       if (identity.isPair(node))
-        return visitor.Pair?.(key, node, path3);
+        return visitor.Pair?.(key, node, path4);
       if (identity.isScalar(node))
-        return visitor.Scalar?.(key, node, path3);
+        return visitor.Scalar?.(key, node, path4);
       if (identity.isAlias(node))
-        return visitor.Alias?.(key, node, path3);
+        return visitor.Alias?.(key, node, path4);
       return void 0;
     }
-    function replaceNode(key, path3, node) {
-      const parent = path3[path3.length - 1];
+    function replaceNode(key, path4, node) {
+      const parent = path4[path4.length - 1];
       if (identity.isCollection(parent)) {
         parent.items[key] = node;
       } else if (identity.isPair(parent)) {
@@ -8662,10 +8662,10 @@ var require_Collection = __commonJS({
     var createNode = require_createNode();
     var identity = require_identity();
     var Node = require_Node();
-    function collectionFromPath(schema, path3, value) {
+    function collectionFromPath(schema, path4, value) {
       let v = value;
-      for (let i = path3.length - 1; i >= 0; --i) {
-        const k = path3[i];
+      for (let i = path4.length - 1; i >= 0; --i) {
+        const k = path4[i];
         if (typeof k === "number" && Number.isInteger(k) && k >= 0) {
           const a = [];
           a[k] = v;
@@ -8684,7 +8684,7 @@ var require_Collection = __commonJS({
         sourceObjects: /* @__PURE__ */ new Map()
       });
     }
-    var isEmptyPath = (path3) => path3 == null || typeof path3 === "object" && !!path3[Symbol.iterator]().next().done;
+    var isEmptyPath = (path4) => path4 == null || typeof path4 === "object" && !!path4[Symbol.iterator]().next().done;
     var Collection = class extends Node.NodeBase {
       constructor(type, schema) {
         super(type);
@@ -8714,11 +8714,11 @@ var require_Collection = __commonJS({
        * be a Pair instance or a `{ key, value }` object, which may not have a key
        * that already exists in the map.
        */
-      addIn(path3, value) {
-        if (isEmptyPath(path3))
+      addIn(path4, value) {
+        if (isEmptyPath(path4))
           this.add(value);
         else {
-          const [key, ...rest] = path3;
+          const [key, ...rest] = path4;
           const node = this.get(key, true);
           if (identity.isCollection(node))
             node.addIn(rest, value);
@@ -8732,8 +8732,8 @@ var require_Collection = __commonJS({
        * Removes a value from the collection.
        * @returns `true` if the item was found and removed.
        */
-      deleteIn(path3) {
-        const [key, ...rest] = path3;
+      deleteIn(path4) {
+        const [key, ...rest] = path4;
         if (rest.length === 0)
           return this.delete(key);
         const node = this.get(key, true);
@@ -8747,8 +8747,8 @@ var require_Collection = __commonJS({
        * scalar values from their surrounding node; to disable set `keepScalar` to
        * `true` (collections are always returned intact).
        */
-      getIn(path3, keepScalar) {
-        const [key, ...rest] = path3;
+      getIn(path4, keepScalar) {
+        const [key, ...rest] = path4;
         const node = this.get(key, true);
         if (rest.length === 0)
           return !keepScalar && identity.isScalar(node) ? node.value : node;
@@ -8766,8 +8766,8 @@ var require_Collection = __commonJS({
       /**
        * Checks if the collection includes a value with the key `key`.
        */
-      hasIn(path3) {
-        const [key, ...rest] = path3;
+      hasIn(path4) {
+        const [key, ...rest] = path4;
         if (rest.length === 0)
           return this.has(key);
         const node = this.get(key, true);
@@ -8777,8 +8777,8 @@ var require_Collection = __commonJS({
        * Sets a value in this collection. For `!!set`, `value` needs to be a
        * boolean to add/remove the item from the set.
        */
-      setIn(path3, value) {
-        const [key, ...rest] = path3;
+      setIn(path4, value) {
+        const [key, ...rest] = path4;
         if (rest.length === 0) {
           this.set(key, value);
         } else {
@@ -8839,7 +8839,7 @@ var require_foldFlowLines = __commonJS({
         else
           end = lineWidth - indentAtStart;
       }
-      let split = void 0;
+      let split2 = void 0;
       let prev = void 0;
       let overflow = false;
       let i = -1;
@@ -8872,18 +8872,18 @@ var require_foldFlowLines = __commonJS({
           if (mode === FOLD_BLOCK)
             i = consumeMoreIndentedLines(text, i, indent.length);
           end = i + indent.length + endStep;
-          split = void 0;
+          split2 = void 0;
         } else {
           if (ch === " " && prev && prev !== " " && prev !== "\n" && prev !== "	") {
             const next = text[i + 1];
             if (next && next !== " " && next !== "\n" && next !== "	")
-              split = i;
+              split2 = i;
           }
           if (i >= end) {
-            if (split) {
-              folds.push(split);
-              end = split + endStep;
-              split = void 0;
+            if (split2) {
+              folds.push(split2);
+              end = split2 + endStep;
+              split2 = void 0;
             } else if (mode === FOLD_QUOTED) {
               while (prev === " " || prev === "	") {
                 prev = ch;
@@ -8896,7 +8896,7 @@ var require_foldFlowLines = __commonJS({
               folds.push(j);
               escapedFolds[j] = true;
               end = j + endStep;
-              split = void 0;
+              split2 = void 0;
             } else {
               overflow = true;
             }
@@ -11227,9 +11227,9 @@ var require_Document = __commonJS({
           this.contents.add(value);
       }
       /** Adds a value to the document. */
-      addIn(path3, value) {
+      addIn(path4, value) {
         if (assertCollection(this.contents))
-          this.contents.addIn(path3, value);
+          this.contents.addIn(path4, value);
       }
       /**
        * Create a new `Alias` node, ensuring that the target `node` has the required anchor.
@@ -11304,14 +11304,14 @@ var require_Document = __commonJS({
        * Removes a value from the document.
        * @returns `true` if the item was found and removed.
        */
-      deleteIn(path3) {
-        if (Collection.isEmptyPath(path3)) {
+      deleteIn(path4) {
+        if (Collection.isEmptyPath(path4)) {
           if (this.contents == null)
             return false;
           this.contents = null;
           return true;
         }
-        return assertCollection(this.contents) ? this.contents.deleteIn(path3) : false;
+        return assertCollection(this.contents) ? this.contents.deleteIn(path4) : false;
       }
       /**
        * Returns item at `key`, or `undefined` if not found. By default unwraps
@@ -11326,10 +11326,10 @@ var require_Document = __commonJS({
        * scalar values from their surrounding node; to disable set `keepScalar` to
        * `true` (collections are always returned intact).
        */
-      getIn(path3, keepScalar) {
-        if (Collection.isEmptyPath(path3))
+      getIn(path4, keepScalar) {
+        if (Collection.isEmptyPath(path4))
           return !keepScalar && identity.isScalar(this.contents) ? this.contents.value : this.contents;
-        return identity.isCollection(this.contents) ? this.contents.getIn(path3, keepScalar) : void 0;
+        return identity.isCollection(this.contents) ? this.contents.getIn(path4, keepScalar) : void 0;
       }
       /**
        * Checks if the document includes a value with the key `key`.
@@ -11340,10 +11340,10 @@ var require_Document = __commonJS({
       /**
        * Checks if the document includes a value at `path`.
        */
-      hasIn(path3) {
-        if (Collection.isEmptyPath(path3))
+      hasIn(path4) {
+        if (Collection.isEmptyPath(path4))
           return this.contents !== void 0;
-        return identity.isCollection(this.contents) ? this.contents.hasIn(path3) : false;
+        return identity.isCollection(this.contents) ? this.contents.hasIn(path4) : false;
       }
       /**
        * Sets a value in this document. For `!!set`, `value` needs to be a
@@ -11360,13 +11360,13 @@ var require_Document = __commonJS({
        * Sets a value in this document. For `!!set`, `value` needs to be a
        * boolean to add/remove the item from the set.
        */
-      setIn(path3, value) {
-        if (Collection.isEmptyPath(path3)) {
+      setIn(path4, value) {
+        if (Collection.isEmptyPath(path4)) {
           this.contents = value;
         } else if (this.contents == null) {
-          this.contents = Collection.collectionFromPath(this.schema, Array.from(path3), value);
+          this.contents = Collection.collectionFromPath(this.schema, Array.from(path4), value);
         } else if (assertCollection(this.contents)) {
-          this.contents.setIn(path3, value);
+          this.contents.setIn(path4, value);
         }
       }
       /**
@@ -12353,13 +12353,13 @@ var require_resolve_block_scalar = __commonJS({
       return { mode, indent, chomp, comment, length };
     }
     function splitLines(source) {
-      const split = source.split(/\n( *)/);
-      const first = split[0];
+      const split2 = source.split(/\n( *)/);
+      const first = split2[0];
       const m = first.match(/^( *)/);
       const line0 = m?.[1] ? [m[1], first.slice(m[1].length)] : ["", first];
       const lines = [line0];
-      for (let i = 1; i < split.length; i += 2)
-        lines.push([split[i], split[i + 1]]);
+      for (let i = 1; i < split2.length; i += 2)
+        lines.push([split2[i], split2[i + 1]]);
       return lines;
     }
     exports2.resolveBlockScalar = resolveBlockScalar;
@@ -13290,9 +13290,9 @@ var require_cst_visit = __commonJS({
     visit.BREAK = BREAK;
     visit.SKIP = SKIP;
     visit.REMOVE = REMOVE;
-    visit.itemAtPath = (cst, path3) => {
+    visit.itemAtPath = (cst, path4) => {
       let item = cst;
-      for (const [field, index] of path3) {
+      for (const [field, index] of path4) {
         const tok = item?.[field];
         if (tok && "items" in tok) {
           item = tok.items[index];
@@ -13301,23 +13301,23 @@ var require_cst_visit = __commonJS({
       }
       return item;
     };
-    visit.parentCollection = (cst, path3) => {
-      const parent = visit.itemAtPath(cst, path3.slice(0, -1));
-      const field = path3[path3.length - 1][0];
+    visit.parentCollection = (cst, path4) => {
+      const parent = visit.itemAtPath(cst, path4.slice(0, -1));
+      const field = path4[path4.length - 1][0];
       const coll = parent?.[field];
       if (coll && "items" in coll)
         return coll;
       throw new Error("Parent collection not found");
     };
-    function _visit(path3, item, visitor) {
-      let ctrl = visitor(item, path3);
+    function _visit(path4, item, visitor) {
+      let ctrl = visitor(item, path4);
       if (typeof ctrl === "symbol")
         return ctrl;
       for (const field of ["key", "value"]) {
         const token = item[field];
         if (token && "items" in token) {
           for (let i = 0; i < token.items.length; ++i) {
-            const ci = _visit(Object.freeze(path3.concat([[field, i]])), token.items[i], visitor);
+            const ci = _visit(Object.freeze(path4.concat([[field, i]])), token.items[i], visitor);
             if (typeof ci === "number")
               i = ci - 1;
             else if (ci === BREAK)
@@ -13328,10 +13328,10 @@ var require_cst_visit = __commonJS({
             }
           }
           if (typeof ctrl === "function" && field === "key")
-            ctrl = ctrl(item, path3);
+            ctrl = ctrl(item, path4);
         }
       }
-      return typeof ctrl === "function" ? ctrl(item, path3) : ctrl;
+      return typeof ctrl === "function" ? ctrl(item, path4) : ctrl;
     }
     exports2.visit = visit;
   }
@@ -15083,7 +15083,7 @@ function init({ manager = "pnpm" } = { manager: "pnpm" }) {
   (0, import_node_child_process.execSync)("touch src/index.ts");
 }
 
-// src/mixed/index.ts
+// src/mixed/main.ts
 var import_prompts2 = __toESM(require_prompts3());
 
 // src/mixed/new-repo.ts
@@ -15136,7 +15136,7 @@ async function run() {
 }
 var new_repo_default = { run, title: "New Repo" };
 
-// src/mixed/index.ts
+// src/mixed/main.ts
 var import_strict = __toESM(require("node:assert/strict"));
 
 // src/mixed/focus-mode.ts
@@ -15165,7 +15165,7 @@ async function run2() {
     console.log(styled.error("Error writing to file. Try running again with sudo."));
   }
 }
-var focusMode = { run: run2, title: "Toggle Focus Mode" };
+var focus_mode_default = { run: run2, title: "Toggle Focus Mode" };
 
 // src/mixed/git-commit.ts
 var import_node_child_process3 = require("node:child_process");
@@ -21334,13 +21334,147 @@ async function run3() {
   console.log(styled.success("Auto commit complete!"));
   process.exit(0);
 }
-var gitCommit = { run: run3, title: "Auto Commit" };
+var git_commit_default = { run: run3, title: "Auto Commit" };
 
-// src/mixed/index.ts
+// src/mixed/add-new-script.ts
+var import_promises3 = require("node:fs/promises");
+var import_node_path3 = __toESM(require("node:path"));
+
+// node_modules/.pnpm/change-case@5.4.4/node_modules/change-case/dist/index.js
+var SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+var SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
+var SPLIT_SEPARATE_NUMBER_RE = /(\d)\p{Ll}|(\p{L})\d/u;
+var DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
+var SPLIT_REPLACE_VALUE = "$1\0$2";
+var DEFAULT_PREFIX_SUFFIX_CHARACTERS = "";
+function split(value) {
+  let result = value.trim();
+  result = result.replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE).replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
+  result = result.replace(DEFAULT_STRIP_REGEXP, "\0");
+  let start = 0;
+  let end = result.length;
+  while (result.charAt(start) === "\0")
+    start++;
+  if (start === end)
+    return [];
+  while (result.charAt(end - 1) === "\0")
+    end--;
+  return result.slice(start, end).split(/\0/g);
+}
+function splitSeparateNumbers(value) {
+  const words = split(value);
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const match2 = SPLIT_SEPARATE_NUMBER_RE.exec(word);
+    if (match2) {
+      const offset2 = match2.index + (match2[1] ?? match2[2]).length;
+      words.splice(i, 1, word.slice(0, offset2), word.slice(offset2));
+    }
+  }
+  return words;
+}
+function noCase(input, options) {
+  const [prefix, words, suffix] = splitPrefixSuffix(input, options);
+  return prefix + words.map(lowerFactory(options?.locale)).join(options?.delimiter ?? " ") + suffix;
+}
+function camelCase(input, options) {
+  const [prefix, words, suffix] = splitPrefixSuffix(input, options);
+  const lower = lowerFactory(options?.locale);
+  const upper = upperFactory(options?.locale);
+  const transform = options?.mergeAmbiguousCharacters ? capitalCaseTransformFactory(lower, upper) : pascalCaseTransformFactory(lower, upper);
+  return prefix + words.map((word, index) => {
+    if (index === 0)
+      return lower(word);
+    return transform(word, index);
+  }).join(options?.delimiter ?? "") + suffix;
+}
+function capitalCase(input, options) {
+  const [prefix, words, suffix] = splitPrefixSuffix(input, options);
+  const lower = lowerFactory(options?.locale);
+  const upper = upperFactory(options?.locale);
+  return prefix + words.map(capitalCaseTransformFactory(lower, upper)).join(options?.delimiter ?? " ") + suffix;
+}
+function kebabCase(input, options) {
+  return noCase(input, { delimiter: "-", ...options });
+}
+function lowerFactory(locale) {
+  return locale === false ? (input) => input.toLowerCase() : (input) => input.toLocaleLowerCase(locale);
+}
+function upperFactory(locale) {
+  return locale === false ? (input) => input.toUpperCase() : (input) => input.toLocaleUpperCase(locale);
+}
+function capitalCaseTransformFactory(lower, upper) {
+  return (word) => `${upper(word[0])}${lower(word.slice(1))}`;
+}
+function pascalCaseTransformFactory(lower, upper) {
+  return (word, index) => {
+    const char0 = word[0];
+    const initial = index > 0 && char0 >= "0" && char0 <= "9" ? "_" + char0 : upper(char0);
+    return initial + lower(word.slice(1));
+  };
+}
+function splitPrefixSuffix(input, options = {}) {
+  const splitFn = options.split ?? (options.separateNumbers ? splitSeparateNumbers : split);
+  const prefixCharacters = options.prefixCharacters ?? DEFAULT_PREFIX_SUFFIX_CHARACTERS;
+  const suffixCharacters = options.suffixCharacters ?? DEFAULT_PREFIX_SUFFIX_CHARACTERS;
+  let prefixIndex = 0;
+  let suffixIndex = input.length;
+  while (prefixIndex < input.length) {
+    const char = input.charAt(prefixIndex);
+    if (!prefixCharacters.includes(char))
+      break;
+    prefixIndex++;
+  }
+  while (suffixIndex > prefixIndex) {
+    const index = suffixIndex - 1;
+    const char = input.charAt(index);
+    if (!suffixCharacters.includes(char))
+      break;
+    suffixIndex = index;
+  }
+  return [
+    input.slice(0, prefixIndex),
+    splitFn(input.slice(prefixIndex, suffixIndex)),
+    input.slice(suffixIndex)
+  ];
+}
+
+// src/mixed/add-new-script.ts
+var import_node_child_process4 = require("node:child_process");
+var templates = {
+  scriptFile: (title) => `async function run () {}; export default { run, title: "${capitalCase(title)}" }`,
+  importLine: (title) => `import ${camelCase(title)} from './${kebabCase(title)}.js';`,
+  scriptLine: (title) => `${camelCase(title)},`
+};
+var mixedPath = ["@alexvyber", "projects", "vyber-cli", "src", "mixed"];
+async function run4() {
+  const title = await arg({ message: "What is the title of the script?" });
+  const scriptFilename = kebabCase(title);
+  const scriptPath = import_node_path3.default.join(homeDir(mixedPath.join("/")), `${scriptFilename}.ts`);
+  const mainPath = homeDir(mixedPath.join("/"), "main.ts");
+  const mainContent = await (0, import_promises3.readFile)(mainPath);
+  const mainFileLines = mainContent.toString().split("\n");
+  mainFileLines.splice(0, 0, templates.importLine(title));
+  const insertIntoScriptsIndex = 1 + mainFileLines.findIndex((line) => line.includes("const scripts = {"));
+  if (insertIntoScriptsIndex === 0) {
+    console.log(styled.error("Can't find `scripts` object declaration in main.ts file"));
+    process.exit(1);
+  }
+  mainFileLines.splice(insertIntoScriptsIndex, 0, templates.scriptLine(title));
+  await (0, import_promises3.writeFile)(scriptPath, templates.scriptFile(title));
+  await (0, import_promises3.writeFile)(mainPath, mainFileLines.join("\n"));
+  (0, import_node_child_process4.exec)("biome format --write .", { cwd: homeDir("@alexvyber", "projects", "vyber-cli") });
+  (0, import_node_child_process4.exec)(`code ${scriptPath}`);
+  process.exit(0);
+}
+var add_new_script_default = { title: "Add New Script", run: run4 };
+
+// src/mixed/main.ts
 var scripts = {
+  addNewScript: add_new_script_default,
   newRepo: new_repo_default,
-  focusMode,
-  gitCommit
+  focusMode: focus_mode_default,
+  gitCommit: git_commit_default
 };
 async function mixed() {
   const choosen = await (0, import_prompts2.default)({

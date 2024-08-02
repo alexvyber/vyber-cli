@@ -4,8 +4,10 @@ import { CLIScript } from "../types.js"
 import assert from "node:assert/strict"
 import focusMode from "./focus-mode.js"
 import gitCommit from "./git-commit.js"
+import addNewScript from "./add-new-script.js"
 
 const scripts = {
+  addNewScript,
   newRepo,
   focusMode,
   gitCommit,

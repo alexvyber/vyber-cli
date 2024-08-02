@@ -25,6 +25,7 @@
     "esbuild": "^0.23.0"
   },
   "dependencies": {
+    "change-case": "^5.4.4",
     "commander": "^12.1.0",
     "luxon": "^3.4.4",
     "prompts": "^2.4.2",
