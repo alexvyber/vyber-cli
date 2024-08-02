@@ -12,6 +12,7 @@ async function run() {
     "git push",
   ]
 
+  // it's better than command1 && ccommand2 && command3
   for (const command of commands) {
     await execAsync(command)
   }
