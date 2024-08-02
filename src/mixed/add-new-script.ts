@@ -4,7 +4,6 @@ import { homeDir } from "../utils/home-dir"
 import path from "node:path"
 import { kebabCase, camelCase, capitalCase } from "change-case"
 import { exec } from "node:child_process"
-import { styled } from "../utils/styled"
 
 const templates = {
   scriptFile: (title: string) => `async function run () {}; export default { run, title: "${capitalCase(title)}" }`,
@@ -25,14 +24,10 @@ async function run() {
   const mainFileLines = mainContent.toString().split("\n")
 
   // -- adding new script to mixed action
-  mainFileLines.splice(0, 0, templates.importLine(title))
+  const insertIntoImportsIndex = 1 + mainFileLines.findLastIndex((line) => line.startsWith("import "))
+  mainFileLines.splice(insertIntoImportsIndex, 0, templates.importLine(title))
+
   const insertIntoScriptsIndex = 1 + mainFileLines.findIndex((line) => line.includes("const scripts = {"))
-
-  if (insertIntoScriptsIndex === 0) {
-    console.log(styled.error("Can't find `scripts` object declaration in main.ts file"))
-    process.exit(1)
-  }
-
   mainFileLines.splice(insertIntoScriptsIndex, 0, templates.scriptLine(title))
   // -- end
 

@@ -1,8 +1,10 @@
-import bookmark from "./bookmark.js"
 import prompts from "prompts"
-import gitNewRepo from "./git-new-repo.js"
-import { CLIScript } from "../types.js"
 import assert from "node:assert/strict"
+
+import { CLIScript } from "../types.js"
+
+import bookmark from "./bookmark.js"
+import gitNewRepo from "./git-new-repo.js"
 import focusMode from "./focus-mode.js"
 import gitCommit from "./git-commit.js"
 import newScript from "./add-new-script.js"
