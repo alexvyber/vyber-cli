@@ -21,7 +21,7 @@ domains_to_block:
 bookmarks_api_url: "https://bookmarks.alexvyber.dev/bookmarks"
 
 repos:
-  - "@alexvyber/doingstuff"
+  - "@alexvyber/repos/doingstuff"
   - "@alexvyber/repos/vyber-cli"
   - "@alexvyber/repos/spoon"
   - "@alexvyber/repos/genstuff"
@@ -47,7 +47,6 @@ repos:
   - "REPOS/v8"
   - "REPOS/zustand"
   - "REPOS/vite"
-  - "REPOS/v8js"
   - "REPOS/strapi"
   - "REPOS/react"
   - "dotfiles"
