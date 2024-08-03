@@ -12,7 +12,7 @@ async function run() {
 
   for (let i = 0; i < repos.length; i = i + ENTRIES_PER_ITERATION) {
     const promises = repos
-      .filter((r) => r.startsWith("@alexvyber"))
+      .filter((r) => !r.startsWith("REPOS"))
       .slice(i, i + ENTRIES_PER_ITERATION)
       .map(
         async (repo) =>

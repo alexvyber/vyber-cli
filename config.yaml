@@ -50,3 +50,4 @@ repos:
   - "REPOS/v8js"
   - "REPOS/strapi"
   - "REPOS/react"
+  - "dotfiles"
