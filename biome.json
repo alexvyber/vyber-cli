@@ -41,7 +41,7 @@
         "noParameterAssign": "error",
         "useFragmentSyntax": "error",
         "noNonNullAssertion": "info",
-        "useBlockStatements": "error",
+        "useBlockStatements": "off",
         "useCollapsedElseIf": "warn",
         "useShorthandAssign": "info",
         "useNumericLiterals": "error",
