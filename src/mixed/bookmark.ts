@@ -9,9 +9,7 @@ async function run() {
   const kind = await arg({ message: "Kind" })
   const description = await arg({ message: "Description" })
 
-  const config = await getConfigContent()
-
-  const { bookmarks_api_url } = YAML.parse(config) as Config
+  const { bookmarks_api_url } = YAML.parse(await getConfigContent()) as Config
 
   const res = await fetch(bookmarks_api_url, {
     method: "POST",
