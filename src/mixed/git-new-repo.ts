@@ -8,7 +8,7 @@ import { styled } from "../utils/styled.js"
 async function run() {
   const name = await arg({ message: "Name" })
 
-  const dirPath = homeDir("@alexvyber/repos", name)
+  const dirPath = homeDir("@alexvyber/_repos", name)
 
   if (existsSync(dirPath)) {
     styled.error(`dir or file exist: ${dirPath}`)
