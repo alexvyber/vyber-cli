@@ -3,27 +3,45 @@ import { writeFile } from "node:fs/promises"
 import path from "node:path"
 import { existsSync } from "node:fs"
 
-async function run() {
+async function run(): Promise<void> {
   const pkjJsonPath = path.join(process.cwd(), "package.json")
 
   try {
+    if (existsSync("biome.json")) return
+
+    // TODO: fix this
+    // @ts-expect-error:
     const pkjJson = await import(pkjJsonPath, { with: { type: "json" } })
 
     if (pkjJson) {
+      const shouldWrite = {
+        format: !("format" in pkjJson.default.scripts),
+        lint: !("lint" in pkjJson.default.scripts),
+        "lint:unsafe": !("lint:unsafe" in pkjJson.default.scripts),
+      }
+
       if (!pkjJson.default.scripts) {
         Object.assign(pkjJson.default, { scripts: {} })
       }
 
-      Object.assign(pkjJson.default.scripts, { format: "biome format --write ." })
-      Object.assign(pkjJson.default.scripts, { lint: "biome lint --write ." })
-      Object.assign(pkjJson.default.scripts, { "lint:unsafe": "biome lint --write --unsafe ." })
+      if (shouldWrite.format) {
+        Object.assign(pkjJson.default.scripts, { format: "biome format --write ." })
+      }
 
-      writeFile(pkjJsonPath, JSON.stringify(pkjJson.default, null, 2), null)
+      if (shouldWrite.lint) {
+        Object.assign(pkjJson.default.scripts, { lint: "biome lint --write ." })
+      }
+
+      if (shouldWrite["lint:unsafe"]) {
+        Object.assign(pkjJson.default.scripts, { "lint:unsafe": "biome lint --write --unsafe ." })
+      }
+
+      if (Object.values(shouldWrite).some(Boolean)) {
+        writeFile(pkjJsonPath, JSON.stringify(pkjJson.default, null, 2), null)
+      }
     }
 
-    if (!existsSync("biome.json")) {
-      writeFile("biome.json", getBiomeFileContent(), { mode: 0o644 })
-    }
+    writeFile("biome.json", getBiomeFileContent(), { mode: 0o644 })
   } catch (error) {
     if (error instanceof Error) {
       console.log(styleText(["red", "bold"], error.message))
