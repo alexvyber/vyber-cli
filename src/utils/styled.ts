@@ -1,7 +1,7 @@
-import { styleText } from "node:util"
+import { styleText } from 'node:util'
 
 export const styled = {
-  error: (msg: string) => styleText(["red", "bold"], msg),
-  success: (msg: string) => styleText(["green", "bold"], msg),
-  info: (msg: string) => styleText(["blue", "bold"], msg),
+  error: (msg: string) => styleText(['red', 'bold'], msg),
+  success: (msg: string) => styleText(['green', 'bold'], msg),
+  info: (msg: string) => styleText(['blue', 'bold'], msg),
 }

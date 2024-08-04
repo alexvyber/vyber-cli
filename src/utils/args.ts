@@ -1,11 +1,11 @@
-import prompts from "prompts"
+import prompts from 'prompts'
 
 export async function arg(opts: { message: string; initial?: string }): Promise<string> {
   const result = await prompts({
-    type: "text",
+    type: 'text',
     message: opts.message,
     initial: opts.initial,
-    name: "arg",
+    name: 'arg',
   })
 
   if (result.arg === null || result.arg === undefined) {
@@ -17,10 +17,10 @@ export async function arg(opts: { message: string; initial?: string }): Promise<
 
 export async function choose(opts: { message: string; choices: string[] }): Promise<string> {
   const result = await prompts({
-    type: "autocomplete",
+    type: 'autocomplete',
     choices: opts.choices.map((choice) => ({ title: choice, value: choice })),
     message: opts.message,
-    name: "arg",
+    name: 'arg',
   })
 
   if (!result.arg) {

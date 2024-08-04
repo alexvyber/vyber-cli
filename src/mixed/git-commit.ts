@@ -1,12 +1,12 @@
-import { execSync } from "node:child_process"
-import { styled } from "../utils/styled"
-import { DateTime } from "luxon"
+import { execSync } from 'node:child_process'
+import { styled } from '../utils/styled'
+import { DateTime } from 'luxon'
 
 async function run() {
   const commands = [
-    "git add -A",
-    `git commit -m "${DateTime.now().setLocale("en-US").toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}"`,
-    "git push",
+    'git add -A',
+    `git commit -m "${DateTime.now().setLocale('en-US').toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}"`,
+    'git push',
   ]
 
   // it's better than command1 && ccommand2 && command3
@@ -14,9 +14,9 @@ async function run() {
     execSync(command)
   }
 
-  console.log(styled.success("Auto commit complete!"))
+  console.log(styled.success('Auto commit complete!'))
 
   process.exit(0)
 }
 
-export default { run, title: "Commit: auto git commit" }
+export default { run, title: 'Commit: auto git commit' }
