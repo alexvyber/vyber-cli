@@ -121,7 +121,7 @@ function getBiomeFileContent() {
         complexity: {
           noVoid: "off",
           noWith: "error",
-          noForEach: "error",
+          noForEach: "off",
           useFlatMap: "error",
           noBannedTypes: "error",
           useLiteralKeys: "error",
@@ -147,7 +147,10 @@ function getBiomeFileContent() {
           noUselessLoneBlockStatements: "error",
           useSimplifiedLogicExpression: "error",
           noMultipleSpacesInRegularExpressionLiterals: "error",
-          noExcessiveCognitiveComplexity: { level: "warn", options: { maxAllowedComplexity: 10 } },
+          noExcessiveCognitiveComplexity: {
+            level: "warn",
+            options: { maxAllowedComplexity: 20 },
+          },
         },
         suspicious: {
           useAwait: "off",

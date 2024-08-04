@@ -1,6 +1,8 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
-  "organizeImports": { "enabled": true },
+  "organizeImports": {
+    "enabled": true
+  },
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
@@ -67,7 +69,7 @@
       "complexity": {
         "noVoid": "off",
         "noWith": "error",
-        "noForEach": "error",
+        "noForEach": "off",
         "useFlatMap": "error",
         "noBannedTypes": "error",
         "useLiteralKeys": "error",
@@ -95,7 +97,9 @@
         "noMultipleSpacesInRegularExpressionLiterals": "error",
         "noExcessiveCognitiveComplexity": {
           "level": "warn",
-          "options": { "maxAllowedComplexity": 10 }
+          "options": {
+            "maxAllowedComplexity": 20
+          }
         }
       },
       "suspicious": {
