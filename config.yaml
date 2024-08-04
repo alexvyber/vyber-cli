@@ -59,6 +59,11 @@ repos:
 - "REPOS/strapi"
 - "REPOS/react"
 - "dotfiles"
+- "work/dragonfly-eld/api"
+- "work/dragonfly-eld/cms"
+- "work/dragonfly-eld/marketing"
+- "work/dragonfly-eld/mobile"
+- "work/dragonfly-eld/web"
 
 
 

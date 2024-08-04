@@ -10,7 +10,7 @@ async function run() {
 
   const ENTRIES_PER_ITERATION = 16
 
-  for (let i = 0; i < repos.length; i = i + ENTRIES_PER_ITERATION) {
+  for (let i = 0; i < repos.length; i += ENTRIES_PER_ITERATION) {
     const promises = repos.slice(i, i + ENTRIES_PER_ITERATION).map(
       async (repo) =>
         new Promise<string>((resolve, reject) =>
