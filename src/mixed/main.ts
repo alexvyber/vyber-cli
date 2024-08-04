@@ -12,8 +12,10 @@ import nodeInit from "./node-init.js"
 import pushAll from "./push-all.js"
 import pullAll from "./pull-all.js"
 import gitStatusAll from "./git-status-all.js"
+import genBiome from "./gen-biome.js"
 
 const scripts = {
+  genBiome,
   gitStatusAll,
   pullAll,
   pushAll,
