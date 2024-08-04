@@ -37,7 +37,7 @@ async function run(): Promise<void> {
       }
 
       if (Object.values(shouldWrite).some(Boolean)) {
-        writeFile(pkjJsonPath, JSON.stringify(pkjJson.default, null, 2), null)
+        writeFile(pkjJsonPath, JSON.stringify(pkjJson.default, null, 2))
       }
     }
 
