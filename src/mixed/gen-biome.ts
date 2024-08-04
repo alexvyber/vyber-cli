@@ -69,11 +69,12 @@ function getBiomeFileContent() {
       lineWidth: 120,
       indentStyle: "space",
       indentWidth: 2,
-      ignore: ["dist", "build", "node_modules", "bin"],
+
+      ignore: ["dist", "build", "node_modules", "__generated__", ".next", "bin"],
       attributePosition: "multiline",
     },
     linter: {
-      ignore: ["dist", "build", "node_modules", "bin"],
+      ignore: ["dist", "build", "node_modules", "__generated__", ".next", "bin"],
       enabled: true,
       rules: {
         recommended: true,
@@ -92,7 +93,7 @@ function getBiomeFileContent() {
           noShoutyConstants: "warn",
           noImplicitBoolean: "error",
           noInferrableTypes: "warn",
-          noParameterAssign: "error",
+          noParameterAssign: "off",
           useFragmentSyntax: "error",
           noNonNullAssertion: "info",
           useBlockStatements: "off",
@@ -252,9 +253,9 @@ function getBiomeFileContent() {
         },
         performance: {
           noAccumulatingSpread: "error",
-          noBarrelFile: "error",
+          noBarrelFile: "off",
           noDelete: "error",
-          noReExportAll: "error",
+          noReExportAll: "off",
         },
       },
     },
