@@ -50,6 +50,7 @@ repos:
 - "@alexvyber/_repos/vybzen"
 - "REPOS/node"
 - "REPOS/fastify"
+- "REPOS/TypeScript"
 - "REPOS/DefinitelyTyped"
 - "REPOS/pino"
 - "REPOS/v8"

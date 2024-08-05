@@ -10,11 +10,11 @@ async function run(): Promise<void> {
   try {
     if (existsSync('biome.json')) return
 
-    // TODO: fix this
-    // @ts-expect-error:
-    const pkjJson = await import(pkjJsonPath, { with: { type: 'json' } })
+    if (existsSync(pkjJsonPath)) {
+      // TODO: fix this
+      // @ts-expect-error:
+      const pkjJson = await import(pkjJsonPath, { with: { type: 'json' } })
 
-    if (pkjJson) {
       const shouldWrite = {
         format: !('format' in pkjJson.default.scripts),
         lint: !('lint' in pkjJson.default.scripts),
