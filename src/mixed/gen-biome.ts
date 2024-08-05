@@ -2,6 +2,7 @@ import { styleText } from 'node:util'
 import { writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { existsSync } from 'node:fs'
+import { styled } from '../utils/styled'
 
 async function run(): Promise<void> {
   const pkjJsonPath = path.join(process.cwd(), 'package.json')
@@ -47,6 +48,8 @@ async function run(): Promise<void> {
       console.log(styleText(['red', 'bold'], error.message))
     }
   }
+
+  console.log(styled.success('Gen Biome complete!'))
 }
 
 export default { run, title: 'Gen Biome' }

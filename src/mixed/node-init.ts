@@ -1,4 +1,6 @@
 import { execSync } from 'node:child_process'
+import genBiome from './gen-biome'
+import gitCommit from './git-commit'
 
 async function run({ manager = 'pnpm' }: { manager?: 'pnpm' | 'yarn' | 'npm' } = { manager: 'pnpm' }) {
   execSync('git init')
@@ -21,10 +23,12 @@ async function run({ manager = 'pnpm' }: { manager?: 'pnpm' | 'yarn' | 'npm' } =
     execSync('npx tsc --init')
   }
 
-  execSync('gen-biome')
   execSync('gen-node-ignore')
   execSync('mkdir src')
   execSync('touch src/index.ts')
+
+  await genBiome.run()
+  await gitCommit.run()
 }
 
 export default { run, title: 'Node Init' }

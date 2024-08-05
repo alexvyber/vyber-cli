@@ -36,8 +36,6 @@ async function run() {
 
   exec('biome format --write .', { cwd: homeDir('@alexvyber', '_repos', 'vyber-cli') })
   exec(`code ${scriptPath}`)
-
-  process.exit(0)
 }
 
 export default { title: 'Script New', run }

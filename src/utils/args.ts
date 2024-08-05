@@ -9,7 +9,7 @@ export async function arg(opts: { message: string; initial?: string }): Promise<
   })
 
   if (result.arg === null || result.arg === undefined) {
-    process.exit(0)
+    process.exit(1)
   }
 
   return result.arg
@@ -24,7 +24,7 @@ export async function choose(opts: { message: string; choices: string[] }): Prom
   })
 
   if (!result.arg) {
-    process.exit(0)
+    process.exit(1)
   }
 
   return result.arg
