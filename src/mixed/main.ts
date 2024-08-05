@@ -13,8 +13,10 @@ import pushAll from './push-all.js'
 import pullAll from './pull-all.js'
 import gitStatusAll from './git-status-all.js'
 import genBiome from './gen-biome.js'
+import gitAll from './git-all.js'
 
 const scripts = {
+  gitAll,
   genBiome,
   gitStatusAll,
   pullAll,
