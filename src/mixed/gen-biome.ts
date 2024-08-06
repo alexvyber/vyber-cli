@@ -80,7 +80,7 @@ function getBiomeFileContent() {
         semicolons: 'asNeeded',
         trailingCommas: 'all',
         arrowParentheses: 'always',
-        quoteStyle: 'single',
+        quoteStyle: 'double',
         jsxQuoteStyle: 'double',
         bracketSameLine: false,
         bracketSpacing: true,
