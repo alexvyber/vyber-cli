@@ -78,7 +78,7 @@ function getBiomeFileContent() {
       // jsxRuntime: "reactClassic",
       formatter: {
         semicolons: 'asNeeded',
-        trailingCommas: 'all',
+        trailingCommas: 'es5',
         arrowParentheses: 'always',
         quoteStyle: 'double',
         jsxQuoteStyle: 'double',

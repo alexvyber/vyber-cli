@@ -1,9 +1,9 @@
 import { styled } from '../utils/styled'
 import { DateTime } from 'luxon'
 // import { execAsync } from '../utils/exec-async'
-import { execSync } from 'node:child_process'
+import { execSync, ExecSyncOptionsWithBufferEncoding } from 'node:child_process'
 
-async function run() {
+async function run(options?: ExecSyncOptionsWithBufferEncoding) {
   const commands = [
     'git add -A',
     `git commit -m "${DateTime.now().setLocale('en-US').toLocaleString(DateTime.DATETIME_MED_WITH_SECONDS)}"`,
@@ -13,7 +13,7 @@ async function run() {
   // it's better than command1 && ccommand2 && command3
   for (const command of commands) {
     try {
-      execSync(command)
+      execSync(command, options)
       // execAsync(command)
     } catch (error) {
       if (error instanceof Error) {

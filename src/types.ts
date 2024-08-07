@@ -7,4 +7,5 @@ export interface Config {
   domains_to_block: string[]
   bookmarks_api_url: string
   repos: string[]
+  autocommit_repos: string[]
 }

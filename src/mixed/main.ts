@@ -14,8 +14,10 @@ import pullAll from './pull-all.js'
 import gitStatusAll from './git-status-all.js'
 import genBiome from './gen-biome.js'
 import gitAll from './git-all.js'
+import autocommit_repos from './auto-commit.js'
 
 const scripts = {
+  autocommit_repos,
   gitAll,
   genBiome,
   gitStatusAll,
