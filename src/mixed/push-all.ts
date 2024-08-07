@@ -1,12 +1,10 @@
-import YAML from 'yaml'
-import { Config } from '../types'
-import { getConfigContent } from '../utils/get-config-content'
 import { homeDir } from '../utils/home-dir'
 import { exec } from 'node:child_process'
 import { styled } from '../utils/styled'
+import { getConfig } from '../utils/get-config'
 
 async function run() {
-  const { repos } = YAML.parse(await getConfigContent()) as Config
+  const { repos } = await getConfig()
 
   const ENTRIES_PER_ITERATION = 16
 

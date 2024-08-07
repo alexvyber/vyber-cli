@@ -1,15 +1,13 @@
 import { arg } from '../utils/args'
-import YAML from 'yaml'
-import { getConfigContent } from '../utils/get-config-content'
-import { Config } from '../types'
 import { styled } from '../utils/styled'
+import { getConfig } from '../utils/get-config'
 
 async function run() {
   const title = await arg({ message: 'Title' })
   const kind = await arg({ message: 'Kind' })
   const description = await arg({ message: 'Description' })
 
-  const { bookmarks_api_url } = YAML.parse(await getConfigContent()) as Config
+  const { bookmarks_api_url } = await getConfig()
 
   const res = await fetch(bookmarks_api_url, {
     method: 'POST',

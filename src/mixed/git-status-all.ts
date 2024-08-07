@@ -1,10 +1,8 @@
-import YAML from 'yaml'
-import { Config } from '../types'
-import { getConfigContent } from '../utils/get-config-content'
 import { homeDir } from '../utils/home-dir'
 import { exec } from 'node:child_process'
 import { styled } from '../utils/styled'
 import { styleText } from 'node:util'
+import { getConfig } from '../utils/get-config'
 
 function colorize(str: string) {
   str
@@ -15,7 +13,7 @@ function colorize(str: string) {
 }
 
 async function run() {
-  const { repos } = YAML.parse(await getConfigContent()) as Config
+  const { repos } = await getConfig()
 
   for (const repo of repos) {
     exec('git status --short --untracked-files', { cwd: homeDir(repo) }, (error, stdout) => {
