@@ -5,6 +5,7 @@
 5. gen node ignore
 6. gen tsconfig
 7. gen git ignore
+8. when init new repo automatically add it to .vyber.yaml
 
 Implementation
 1. Do I realy need commander?
