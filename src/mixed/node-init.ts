@@ -23,11 +23,12 @@ async function run({ manager = 'pnpm' }: { manager?: 'pnpm' | 'yarn' | 'npm' } =
     execSync('npx tsc --init')
   }
 
+  await genBiome.run()
+
   execSync('gen-node-ignore')
   execSync('mkdir src')
   execSync('touch src/index.ts')
 
-  await genBiome.run()
   await gitCommit.run()
 }
 
