@@ -8,7 +8,6 @@
   "type": "commonjs",
   "main": "src/bin.ts",
   "bin": {
-    "v": "./bin/index.cjs",
     "vyber": "./bin/index.cjs"
   },
   "scripts": {
