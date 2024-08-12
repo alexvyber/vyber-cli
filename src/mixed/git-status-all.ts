@@ -18,7 +18,7 @@ async function run() {
   for (const repo of repos) {
     exec('git status --short --untracked-files', { cwd: homeDir(repo) }, (error, stdout) => {
       if (error) {
-        console.error(styled.error(error.message))
+        console.error(styled.error(repo + " " + error.message))
       }
 
       if (stdout === '') {
